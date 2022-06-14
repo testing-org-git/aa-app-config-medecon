@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "x-display": "tabs",
+  "x-props": {
+    "grow": true
+  },
+  "description": "Some App Config",
+  "allOf": [
+    {
+      "title": "Random Section 1",
+      "description": "I'm a description shown as a paragraph on top of section",
+      "properties": {
+        "ACG3YearHotfix": {
+          "type": "string",
+          "title": "ACG3YearHotfix",
+          "pattern": "^\\d+$",
+          "default": "10",
+          "isOnlyEditableByArcadians": true,
+          "description": "Set to 1 for AAD-21409 and run NJ. This must immediately be reset to 0 before the next nightly job."
+        },
+        "ACGRunPrevYears": {
+          "type": "string",
+          "title": "ACGRunPrevNewYears",
+          "pattern": "^\\d+$",
+          "default": "1",
+          "isOnlyEditableByArcadians": true,
+          "description": "Whether we process ACG Risk scores for previous years. If HhsHccRunPrevYears = 1, this ACGRunPrevYears config is ignored and ACG scores will run for previous years."
+        },
+        "ADTUseAggressivePersonMatch": {
+          "type": "string",
+          "title": "ADTUseAggressivePersonMatch(Drop Down Example)",
+          "enum": ["0", "1"],
+          "description": "Whether we process ACG Risk scores for previous years. If HhsHccRunPrevYears = 1, this ACGRunPrevYears config is ignored and ACG scores will run for previous years."
+        },
+        "CaseInsensitiveRegexExample": {
+          "type": "string",
+          "title": "CaseInsensitiveRegexExample",
+          "pattern": "[hHcCcC]",
+
+          "default": "hcc",
+          "description": "Should allow HCC,hcc,or any combination of case of that word. For longer string, we suggest an external validator, see below."
+        },
+        "CustomValidationRuleExample": {
+          "type": "string",
+          "title": "CustomValidationRuleExample",
+          "description": "Calls a function called 'hccNonCaseSensitive' to do validation."
+        },
+        "BooleanExample": {
+          "type": "boolean",
+          "title": "BooleanExample",
+          "description": "Test of boolean output type."
+        },
+        "ReadOnlyExample": {
+          "type": "string",
+          "title": "Example of read only field",
+          "default": "stewie",
+          "readOnly": true
+        },
+        "Hidden for certain Users": {
+          "type": "string",
+          "title": "Example of conditionally hidden field",
+          "default": "sandy",
+          "x-if": "context.display"
+        }
+      }
+    },
+    {
+      "title": "Random Section 2",
+      "description": "I'm a description shown as a paragraph on top of section",
+      "properties": {
+        "AssessProfileVersion": {
+          "type": "string",
+          "title": "AssessProfileVersion",
+          "default": "10",
+          "description": "Version of Assess Profile algorithm created by product."
+        },
+        "AttributionFallback": {
+          "type": "string",
+          "title": "ACGRunPrevYears",
+          "enum": ["NULL", "plan", "functional"],
+          "description": "Fallback method to use for attribution models. Options are NULL, plan, and functional."
+        },
+        "AttributionMetric_Lookback": {
+          "type": "string",
+          "title": "ADTUseAggressivePersonMatch",
+          "pattern": "^\\d+$",
+          "description": "Configure number of months to look back when calculating Attribution metric."
+        }
+      }
+    }
+  ]
+}
